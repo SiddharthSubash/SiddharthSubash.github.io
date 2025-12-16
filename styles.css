@@ -47,6 +47,8 @@ html{ scroll-behavior:smooth; }
   background: rgba(7,10,18,.55);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255,255,255,.06);
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 .brand{
@@ -67,13 +69,19 @@ html{ scroll-behavior:smooth; }
 }
 .nav a:hover{color:var(--fg)}
 
-.wrap{width:min(1100px, 92vw); margin:0 auto; padding:22px 0 40px}
+.wrap{
+  width:min(1100px, 92vw); 
+  margin:0 auto;
+  padding:22px 0 40px
+}
 
 .hero{
   display:grid;
   grid-template-columns: 1.2fr .8fr;
   gap:18px;
   padding:18px 0 10px;
+  position: relative;
+  z-index: 1;
 }
 
 .pill{
@@ -134,6 +142,7 @@ h1{font-size: clamp(34px, 4.6vw, 56px); margin:12px 0 10px}
   /* Force stable compositing */
   transform: translateZ(0);
   will-change: transform;
+  backface-visibility: hidden;
   isolation: isolate;
 }
 
@@ -145,6 +154,13 @@ h1{font-size: clamp(34px, 4.6vw, 56px); margin:12px 0 10px}
   border-radius: inherit;
   border: 1px solid rgba(255,255,255,.18);
   pointer-events:none;
+}
+
+@supports ((-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px))) {
+  .glass{
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+  }
 }
 
 .card{padding:16px; position:relative; overflow:hidden}
@@ -220,4 +236,5 @@ h1{font-size: clamp(34px, 4.6vw, 56px); margin:12px 0 10px}
   html { scroll-behavior: auto; }
   .bg, .glass, .btn, .reveal { animation: none !important; transition: none !important; }
 }
+
 
