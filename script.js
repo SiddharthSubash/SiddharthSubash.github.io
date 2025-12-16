@@ -1,11 +1,17 @@
-if ("scrollRestoration" in history) {
-  history.scrollRestoration = "manual";
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
 }
 
-// Optional: always start at top on reload
-window.addEventListener("load", () => {
+// Force top on reload
+function forceScrollTop() {
   window.scrollTo(0, 0);
-});
+}
+
+// Runs on normal load
+window.addEventListener('load', forceScrollTop);
+
+// Runs when page is restored from back/forward cache (very important)
+window.addEventListener('pageshow', forceScrollTop);
 
 document.getElementById("year").textContent = new Date().getFullYear();
 
@@ -55,4 +61,5 @@ window.addEventListener("pageshow", () => {
 });
 
 window.addEventListener("resize", forceShowVisible);
+
 
