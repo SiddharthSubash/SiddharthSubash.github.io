@@ -212,3 +212,25 @@ h1{font-size: clamp(34px, 4.6vw, 56px); margin:12px 0 10px}
   .bg, .glass, .btn, .reveal { animation: none !important; transition: none !important; }
 }
 
+/* Themed links (override browser blue) */
+a{
+  color: #8fb6ff;
+  text-decoration: none;
+  transition: color .2s ease, text-shadow .2s ease;
+}
+
+a:hover{
+  color: #b7d2ff;
+  text-shadow: 0 0 8px rgba(143,182,255,.35);
+}
+
+/* Contact section specific polish */
+#contact a{
+  color: #9fc4ff;
+  font-weight: 600;
+}
+
+#contact a:hover{
+  color: #c9dcff;
+}
+
