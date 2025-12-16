@@ -31,6 +31,8 @@ html{ scroll-behavior:smooth; }
   opacity: .85;
   z-index: -1;
   pointer-events: none;
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 @keyframes float{
@@ -125,17 +127,24 @@ h1{font-size: clamp(34px, 4.6vw, 56px); margin:12px 0 10px}
 .grid.three{grid-template-columns:repeat(3, 1fr)}
 
 .glass{
-  background: var(--glass);
-  border: 1px solid var(--stroke);
-  border-radius: 16px;
-  box-shadow: 0 14px 40px var(--shadow);
-  backdrop-filter: blur(10px);
-  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  position: relative;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.08);
+
+  /* Force stable compositing */
+  transform: translateZ(0);
+  will-change: transform;
+  isolation: isolate;
 }
-.glass:hover{
-  transform: translateY(-4px);
-  box-shadow: 0 18px 60px rgba(0,0,0,.55);
-  border-color: rgba(255,255,255,.22);
+
+/* Draw the border as an overlay */
+.glass::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius: inherit;
+  border: 1px solid rgba(255,255,255,.18);
+  pointer-events:none;
 }
 
 .card{padding:16px; position:relative; overflow:hidden}
@@ -211,3 +220,4 @@ h1{font-size: clamp(34px, 4.6vw, 56px); margin:12px 0 10px}
   html { scroll-behavior: auto; }
   .bg, .glass, .btn, .reveal { animation: none !important; transition: none !important; }
 }
+
