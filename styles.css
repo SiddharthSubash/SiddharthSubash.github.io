@@ -21,14 +21,16 @@ body{
 html{ scroll-behavior:smooth; }
 
 .bg{
-  position:fixed; inset:-20%;
+  position: fixed;
+  inset: -30vmax;
   background:
-    radial-gradient(40% 35% at 20% 20%, rgba(92,140,255,.24), transparent 55%),
-    radial-gradient(38% 30% at 75% 25%, rgba(255,92,214,.20), transparent 55%),
-    radial-gradient(45% 40% at 55% 80%, rgba(92,255,214,.16), transparent 60%);
-  filter: blur(20px);
-  z-index:-1;
-  animation: float 12s ease-in-out infinite;
+    radial-gradient(45vmax 35vmax at 20% 20%, rgba(92,140,255,.22), transparent 60%),
+    radial-gradient(40vmax 30vmax at 75% 25%, rgba(255,92,214,.18), transparent 60%),
+    radial-gradient(45vmax 40vmax at 55% 85%, rgba(92,255,214,.14), transparent 65%);
+  filter: blur(22px);
+  opacity: .85;
+  z-index: -1;
+  pointer-events: none;
 }
 
 @keyframes float{
@@ -209,3 +211,4 @@ h1{font-size: clamp(34px, 4.6vw, 56px); margin:12px 0 10px}
   html { scroll-behavior: auto; }
   .bg, .glass, .btn, .reveal { animation: none !important; transition: none !important; }
 }
+
