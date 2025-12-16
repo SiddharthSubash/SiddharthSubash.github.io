@@ -1,3 +1,12 @@
+if ("scrollRestoration" in history) {
+  history.scrollRestoration = "manual";
+}
+
+// Optional: always start at top on reload
+window.addEventListener("load", () => {
+  window.scrollTo(0, 0);
+});
+
 document.getElementById("year").textContent = new Date().getFullYear();
 
 const targets = [
@@ -46,3 +55,4 @@ window.addEventListener("pageshow", () => {
 });
 
 window.addEventListener("resize", forceShowVisible);
+
